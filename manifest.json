@@ -1,0 +1,8 @@
+{
+  "name": "Simple Icons",
+  "id": "1149614463603005908",
+  "api": "1.0.0",
+  "main": "distribution/code.js",
+  "editorType": ["figma"],
+  "ui": "distribution/ui.html"
+}
