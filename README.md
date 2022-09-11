@@ -3,12 +3,12 @@
 The Figma plugin for Simple Icons
 
 <p align="center">
-  <img width="500" src="https://raw.githubusercontent.com/LitoMore/simple-icons-figma/main/media/screenshot.jpg" />
+  <img width="520" src="https://raw.githubusercontent.com/LitoMore/simple-icons-figma/main/media/screenshot.png" />
 </p>
 
-## Usage
+## Install
 
-To be written
+Search `Simple Icons` from Figma Plugins.
 
 ## License
 
