@@ -4,7 +4,7 @@ const Search = ({onChange}: {onChange?: (value?: string) => void}) => (
 	<input
 		type="search"
 		className="search-input"
-		placeholder="Search icons..."
+		placeholder="Search by brand..."
 		onChange={(event) => {
 			onChange?.(event.target.value);
 		}}
