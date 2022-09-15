@@ -8,7 +8,7 @@ The Figma plugin for Simple Icons
 
 ## Install
 
-Search `Simple Icons` from Figma Plugins.
+Get the plugin from [Figma Community](https://www.figma.com/community/plugin/1149614463603005908/Simple-Icons).
 
 ## License
 
