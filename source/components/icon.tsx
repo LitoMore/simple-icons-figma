@@ -12,14 +12,46 @@ const Icon = ({
 
 	return (
 		<div
+			draggable
 			className="icon"
+			onDragEnd={(event) => {
+				// @ts-expect-error: Expect `length`
+				if (event.view.length === 0) return;
+				const file = new File(
+					[
+						(event.target as HTMLDivElement)
+							.querySelector('svg')
+							?.innerHTML?.replace('fill="#000000"', `fill="#${icon.hex}"`) ??
+							'',
+					],
+					'content.svg',
+					{
+						type: 'image/svg+xml',
+					},
+				);
+				parent.postMessage(
+					{
+						pluginDrop: {
+							clientX: event.clientX,
+							clientY: event.clientY,
+							files: [file].filter(Boolean),
+						},
+					},
+					'*',
+				);
+			}}
 			style={{
 				border: `${isWhite ? 1 : 2}px solid #${isWhite ? '000' : icon.hex}`,
 				borderBottomWidth: isWhite ? 1 : 0,
 			}}
 			onClick={() => {
 				parent.postMessage(
-					{pluginMessage: {type: 'insert-svg', svg: icon.svg}},
+					{
+						pluginMessage: {
+							type: 'insert-svg',
+							svg: `<path d="${icon.path}" fill="#${icon.hex}" />`,
+						},
+					},
 					'*',
 				);
 			}}
