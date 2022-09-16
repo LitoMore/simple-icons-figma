@@ -14,7 +14,7 @@ esbuild
 	// eslint-disable-next-line unicorn/no-process-exit
 	.catch(() => process.exit(1));
 
-const script = esbuild.buildSync({
+const script = await esbuild.build({
 	entryPoints: ['source/ui.tsx'],
 	loader: {'.tsx': 'tsx'},
 	bundle: true,
