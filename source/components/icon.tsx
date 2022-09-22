@@ -41,7 +41,9 @@ const Icon = ({
 				);
 			}}
 			style={{
-				border: `${isWhite ? 1 : 2}px solid #${isWhite ? '000' : icon.hex}`,
+				border: `${isWhite ? 1 : 2}px solid ${
+					isWhite ? 'var(--icon-border-color)' : '#' + icon.hex
+				}`,
 				borderBottomWidth: isWhite ? 1 : 0,
 			}}
 			onClick={() => {

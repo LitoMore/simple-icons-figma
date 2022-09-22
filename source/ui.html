@@ -1,4 +1,8 @@
 <style>
+  :root {
+    --icon-border-color: #000;
+  }
+
   .search-input {
     position: fixed;
     top: 5px;
@@ -50,5 +54,27 @@
 
   .icon-color.light {
     color: #fff;
+  }
+
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --icon-border-color: #eee;
+    }
+
+    body {
+      background-color: #333;
+      color: #eee;
+    }
+
+    .search-input {
+      background-color: #333333ee;
+      color: #eee;
+      border-color: #eee;
+    }
+
+    svg > path {
+      fill: #eee;
+    }
   }
 </style>
