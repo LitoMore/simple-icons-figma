@@ -1,3 +1,4 @@
+<title>The Figma plugin for Simple Icons</title>
 <style>
   .search-input {
     position: fixed;
@@ -35,6 +36,7 @@
 
   .icon-title {
     flex: 1;
+    padding: 0 2px;
     font-size: 12px;
     font-family: Inter, sans-serif;
     text-align: center;
@@ -53,19 +55,31 @@
     color: #fff;
   }
 
+  :root {
+    --fallback-color-bg: #fff;
+    --fallback-color-text: #000;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fallback-color-bg: #2c2c2c;
+      --fallback-color-text: #fff;
+    }
+  }
+
   /* Dark mode */
   body {
-    background-color: var(--figma-color-bg);
-    color: var(--figma-color-text);
+    background-color: var(--figma-color-bg, var(--fallback-color-bg));
+    color: var(--figma-color-text, var(--fallback-color-text));
   }
 
   .search-input {
-    background-color: var(--figma-color-bg);
-    color: var(--figma-color-text);
-    border-color: var(--figma-color-text);
+    background-color: var(--figma-color-bg, var(--fallback-color-bg));
+    color: var(--figma-color-text, var(--fallback-color-text));
+    border-color: var(--figma-color-text, var(--fallback-color-text));
   }
 
   svg > path {
-    fill: var(--figma-color-text);
+    fill: var(--figma-color-text, var(--fallback-color-text));
   }
 </style>

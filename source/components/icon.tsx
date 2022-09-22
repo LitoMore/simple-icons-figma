@@ -42,7 +42,9 @@ const Icon = ({
 			}}
 			style={{
 				border: `${isWhite ? 1 : 2}px solid ${
-					isWhite ? 'var(--figma-color-text)' : '#' + icon.hex
+					isWhite
+						? 'var(--figma-color-text, var(--fallback-color-text))'
+						: '#' + icon.hex
 				}`,
 				borderBottomWidth: isWhite ? 1 : 0,
 			}}
