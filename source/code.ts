@@ -1,5 +1,5 @@
 /* eslint unicorn/prefer-add-event-listener: off */
-figma.showUI(__html__);
+figma.showUI(__html__, {themeColors: true});
 figma.ui.resize(540, 540);
 
 figma.ui.onmessage = (message) => {
