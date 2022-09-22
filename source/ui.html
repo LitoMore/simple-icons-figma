@@ -1,8 +1,4 @@
 <style>
-  :root {
-    --icon-border-color: #000;
-  }
-
   .search-input {
     position: fixed;
     top: 5px;
@@ -58,23 +54,19 @@
 
   /* Dark mode */
   @media (prefers-color-scheme: dark) {
-    :root {
-      --icon-border-color: #eee;
-    }
-
     body {
-      background-color: #333;
-      color: #eee;
+      background-color: var(--figma-color-bg);
+      color: var(--figma-color-text);
     }
 
     .search-input {
-      background-color: #333333ee;
-      color: #eee;
-      border-color: #eee;
+      background-color: var(--figma-color-bg);
+      color: var(--figma-color-text);
+      border-color: var(--figma-color-text);
     }
 
     svg > path {
-      fill: #eee;
+      fill: var(--figma-color-text);
     }
   }
 </style>
