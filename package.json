@@ -26,7 +26,7 @@
     "color-convert": "^2.0.1",
     "fast-fuzzy": "^1.11.2",
     "get-relative-luminance": "^2.0.0-0",
-    "simple-icons": "^7.12.0"
+    "simple-icons": "^7.13.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.51.0",
