@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "del-cli distribution && node esbuild.js",
-    "test": "xo"
+    "test": "xo",
+    "deploy": "gh-pages -d distribution"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@types/react-dom": "^18.0.6",
     "del-cli": "^5.0.0",
     "esbuild": "^0.15.7",
+    "gh-pages": "^4.0.0",
     "html-minifier-terser": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
