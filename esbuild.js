@@ -23,7 +23,7 @@ const script = await esbuild.build({
 	target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
 });
 
-const html = await readFile('source/ui.html', 'utf8');
+const html = await readFile('source/index.html', 'utf8');
 
 const minifyOptions = {
 	collapseWhitespace: true,
@@ -37,7 +37,7 @@ const minifyOptions = {
 };
 
 await writeFile(
-	'distribution/ui.html',
+	'distribution/index.html',
 	`<div id="app"></div><script>${
 		script.outputFiles[0].text
 	}</script>${await minify(html, minifyOptions)}`,
