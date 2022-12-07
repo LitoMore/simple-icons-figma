@@ -1,10 +1,13 @@
 import React from 'react';
-import * as simpleIcons from 'simple-icons/icons'; // eslint-disable-line n/file-extension-in-import
+import * as simpleIcons from 'simple-icons';
 import getRelativeLuminance from 'get-relative-luminance';
 import {Searcher} from 'fast-fuzzy';
 import Icon from './icon.js';
 
-const icons = Object.values(simpleIcons);
+// @ts-expect-error: Expected
+const {default: _, ...exportedIcons} = simpleIcons;
+
+const icons = Object.values(exportedIcons);
 const searcher = new Searcher(icons, {
 	keySelector: (icon) => [icon.title, icon.slug],
 });
