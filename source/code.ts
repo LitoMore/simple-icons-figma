@@ -5,7 +5,7 @@ figma.ui.resize(540, 540);
 figma.ui.onmessage = (message) => {
 	if (message.type === 'insert-svg') {
 		const nodes: SceneNode[] = [];
-		const svg = message.svg; // eslint-disable-line @typescript-eslint/no-unsafe-assignment
+		const svg = message.svg as string;
 		const svgNode = figma.createNodeFromSvg(svg);
 		nodes.push(svgNode);
 		figma.currentPage.selection = nodes;

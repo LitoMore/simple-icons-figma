@@ -3,16 +3,18 @@ import {readFile, writeFile} from 'node:fs/promises';
 import esbuild from 'esbuild';
 import {minify} from 'html-minifier-terser';
 
-esbuild
-	.build({
+try {
+	esbuild.build({
 		entryPoints: ['source/code.ts'],
 		bundle: true,
 		platform: 'node',
 		target: ['node10.4'],
 		outfile: 'distribution/code.js',
-	})
+	});
+} catch {
 	// eslint-disable-next-line unicorn/no-process-exit
-	.catch(() => process.exit(1));
+	process.exit(1);
+}
 
 const script = await esbuild.build({
 	entryPoints: ['source/ui.tsx'],
