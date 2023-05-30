@@ -4,5 +4,8 @@
   "api": "1.0.0",
   "main": "distribution/code.js",
   "editorType": ["figma", "figjam"],
-  "ui": "distribution/index.html"
+  "ui": "distribution/index.html",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
 }
