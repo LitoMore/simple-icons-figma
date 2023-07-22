@@ -1,11 +1,12 @@
 import React from 'react';
-import type {SimpleIcon} from 'simple-icons';
+import type {IconData} from '../types.js';
+import {loadSvg} from '../utils.js';
 
 const Icon = ({
 	icon,
 	contrastLight,
 }: {
-	icon: SimpleIcon;
+	icon: IconData;
 	contrastLight: boolean;
 }) => {
 	const isWhite = icon.hex === 'FFFFFF';
@@ -14,21 +15,14 @@ const Icon = ({
 		<div
 			draggable
 			className="icon"
-			onDragEnd={(event) => {
+			onDragEnd={async (event) => {
 				// @ts-expect-error: Expect `length`
 				if (event.view.length === 0) return;
-				const file = new File(
-					[
-						(event.target as HTMLDivElement)
-							.querySelector('svg')
-							?.innerHTML?.replace('fill="#000000"', `fill="#${icon.hex}"`) ??
-							'',
-					],
-					'content.svg',
-					{
-						type: 'image/svg+xml',
-					},
-				);
+				const svg = await loadSvg(icon.slug);
+				const coloredSvg = svg.replace('<path ', `<path fill="#${icon.hex}" `);
+				const file = new File([coloredSvg], 'content.svg', {
+					type: 'image/svg+xml',
+				});
 				parent.postMessage(
 					{
 						pluginDrop: {
@@ -48,21 +42,24 @@ const Icon = ({
 				}`,
 				borderBottomWidth: isWhite ? 1 : 0,
 			}}
-			onClick={() => {
+			onClick={async () => {
+				const svg = await loadSvg(icon.slug);
 				parent.postMessage(
 					{
 						pluginMessage: {
 							type: 'insert-svg',
-							svg: `<path d="${icon.path}" fill="#${icon.hex}" />`,
+							svg: svg.replace('<path ', `<path fill="#${icon.hex}" `),
 						},
 					},
 					'*',
 				);
 			}}
 		>
-			<svg viewBox="0 0 24 24" width="50" height="50">
-				<path fill="#000000" d={icon.path} />
-			</svg>
+			<img
+				className="icon-image"
+				loading="lazy"
+				src={`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`}
+			/>
 			<div className="icon-title">{icon.title}</div>
 			<div
 				className={`icon-color ${contrastLight ? 'light' : ''}`}

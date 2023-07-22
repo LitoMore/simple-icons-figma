@@ -8,7 +8,7 @@ try {
 		entryPoints: ['source/code.ts'],
 		bundle: true,
 		platform: 'node',
-		target: ['node10.4'],
+		target: ['node14'],
 		outfile: 'distribution/code.js',
 	});
 } catch {
