@@ -1,6 +1,6 @@
 import React from 'react';
 import type {IconData} from '../types.js';
-import {loadSvg} from '../utils.js';
+import {loadSvg, simpleIconsVersion} from '../utils.js';
 
 const Icon = ({
 	icon,
@@ -58,7 +58,7 @@ const Icon = ({
 			<img
 				className="icon-image"
 				loading="lazy"
-				src={`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`}
+				src={`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/icons/${icon.slug}.svg`}
 			/>
 			<div className="icon-title">{icon.title}</div>
 			<div
