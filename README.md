@@ -1,6 +1,8 @@
-# simple-icons-figma
+<h1 align="center">simple-icons-figma</h1>
 
-The Figma plugin for Simple Icons
+<p align="center">
+  The Figma plugin for Simple Icons
+</p>
 
 <p align="center">
   <img width="520" src="https://raw.githubusercontent.com/LitoMore/simple-icons-figma/main/media/screenshot.png" />
