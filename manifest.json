@@ -6,7 +6,7 @@
   "editorType": ["figma", "figjam"],
   "ui": "distribution/index.html",
   "networkAccess": {
-    "allowedDomains": ["cdn.jsdelivr.net"],
+    "allowedDomains": ["https://cdn.jsdelivr.net"],
     "reasoning": "We use jsDelivr to host our icons."
   }
 }
