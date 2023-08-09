@@ -2,13 +2,7 @@ import React from 'react';
 import type {IconData} from '../types.js';
 import {loadSvg, simpleIconsVersion} from '../utils.js';
 
-const Icon = ({
-	icon,
-	contrastLight,
-}: {
-	icon: IconData;
-	contrastLight: boolean;
-}) => {
+const Icon = ({icon, luminance}: {icon: IconData; luminance: number}) => {
 	const isWhite = icon.hex === 'FFFFFF';
 
 	return (
@@ -38,7 +32,7 @@ const Icon = ({
 				border: `${isWhite ? 1 : 2}px solid ${
 					isWhite
 						? 'var(--figma-color-text, var(--fallback-color-text))'
-						: '#' + icon.hex
+						: `#${icon.hex}`
 				}`,
 				borderBottomWidth: isWhite ? 1 : 0,
 			}}
@@ -55,14 +49,22 @@ const Icon = ({
 				);
 			}}
 		>
-			<img
+			<div
 				className="icon-image"
-				src={`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/icons/${icon.slug}.svg`}
+				style={{
+					backgroundColor: isWhite ? 'currentColor' : `#${icon.hex}`,
+					WebkitMask: `url(https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/icons/${icon.slug}.svg)`,
+					WebkitMaskSize: 'contain',
+					WebkitMaskRepeat: 'no-repeat',
+					WebkitMaskPosition: 'center',
+				}}
 			/>
 			<div className="icon-title">{icon.title}</div>
 			<div
-				className={`icon-color ${contrastLight ? 'light' : ''}`}
-				style={{backgroundColor: `#${icon.hex}`}}
+				className={`icon-color ${luminance < 0.4 ? 'light' : ''}`}
+				style={{
+					backgroundColor: `#${icon.hex}`,
+				}}
 			>
 				#{icon.hex}
 			</div>

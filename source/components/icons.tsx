@@ -1,4 +1,4 @@
-import React, {forwardRef} from 'react';
+import React, {useMemo, memo} from 'react';
 import styled from 'styled-components'; // eslint-disable-line import/no-named-as-default
 import getRelativeLuminance from 'get-relative-luminance';
 import {Searcher} from 'fast-fuzzy';
@@ -24,6 +24,17 @@ const Icons = ({
 		keySelector: (icon) => [icon.title, icon.slug],
 	});
 	const searchResult = searchString ? searcher.search(searchString) : icons;
+	const luminanceMap = useMemo(
+		() =>
+			new Map(
+				[...new Set(icons.map((icon) => icon.hex))].map((hex) => [
+					hex,
+					// @ts-expect-error: Expected
+					getRelativeLuminance.default(`#${hex}`), // eslint-disable-line @typescript-eslint/no-unsafe-call
+				]),
+			),
+		[icons],
+	);
 
 	return (
 		<VirtuosoGrid
@@ -36,10 +47,13 @@ const Icons = ({
 			}}
 			itemContent={(index) => {
 				const icon = searchResult[index];
-				// @ts-expect-error: Expected
-				const luminance = getRelativeLuminance.default(`#${icon.hex}`); // eslint-disable-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-				const light = luminance < 0.4;
-				return <Icon key={icon.slug} icon={icon} contrastLight={light} />;
+				return (
+					<Icon
+						key={icon.slug}
+						icon={icon}
+						luminance={Number(luminanceMap.get(icon.hex))}
+					/>
+				);
 			}}
 		/>
 	);
