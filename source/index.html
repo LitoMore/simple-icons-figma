@@ -24,13 +24,6 @@
     font-family: Inter, sans-serif;
   }
 
-  .icons {
-    display: grid;
-    padding-top: 33px;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 5px;
-  }
-
   .icon-image {
     overflow: hidden;
   }
@@ -91,6 +84,7 @@
     background-color: var(--figma-color-bg, var(--fallback-color-bg));
     color: var(--figma-color-text, var(--fallback-color-text));
     border-color: var(--figma-color-text, var(--fallback-color-text));
+    z-index: 1;
   }
 
   svg > path {

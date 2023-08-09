@@ -57,7 +57,6 @@ const Icon = ({
 		>
 			<img
 				className="icon-image"
-				loading="lazy"
 				src={`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/icons/${icon.slug}.svg`}
 			/>
 			<div className="icon-title">{icon.title}</div>
