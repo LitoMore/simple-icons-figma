@@ -22,7 +22,7 @@ const App = () => {
 	});
 
 	return (
-		<div>
+		<div className="container">
 			<Search
 				onChange={(value = '') => {
 					setSearchString(value);

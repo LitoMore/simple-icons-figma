@@ -11,6 +11,7 @@ const ListContainer = styled.div`
 	flex-wrap: wrap;
 	margin-top: 33px;
 	gap: 5px;
+	margin: 40px 8px 0 8px;
 `;
 
 const Icons = ({
@@ -38,7 +39,7 @@ const Icons = ({
 
 	return (
 		<VirtuosoGrid
-			style={{height: 520}}
+			style={{height: window.innerHeight}}
 			totalCount={searchResult.length}
 			overscan={100}
 			components={{
