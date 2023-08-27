@@ -1,6 +1,6 @@
 import type {IconJson} from './types';
 
-export const simpleIconsVersion = '9.11.0';
+export const simpleIconsVersion = '9.12.0';
 
 const titleToSlugReplacements: Record<string, string> = {
 	/* eslint-disable @typescript-eslint/naming-convention */
