@@ -4,20 +4,23 @@ import Search from './components/search.js';
 import Icons from './components/icons.js';
 import Loading from './components/loading.js';
 import type {IconData} from './types.js';
-import {loadJson, titleToSlug} from './utils.js';
+import {loadLatestVersion, loadJson, titleToSlug} from './utils.js';
 
 const App = () => {
 	const [searchString, setSearchString] = useState('');
 	const [icons, setIcons] = useState<IconData[]>([]);
+	const [version, setVersion] = useState<string>('latest');
 
 	useEffect(() => {
 		(async () => {
-			const json = await loadJson();
+			const version = await loadLatestVersion();
+			const json = await loadJson(version);
 			const icons = json.icons.map((icon) => ({
 				...icon,
 				slug: icon.slug || titleToSlug(icon.title),
 			}));
 			setIcons(icons);
+			setVersion(version);
 		})();
 	});
 
@@ -29,7 +32,7 @@ const App = () => {
 				}}
 			/>
 			{icons.length > 0 ? (
-				<Icons searchString={searchString} icons={icons} />
+				<Icons searchString={searchString} icons={icons} version={version} />
 			) : (
 				<Loading />
 			)}

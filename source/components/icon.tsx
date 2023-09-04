@@ -1,8 +1,16 @@
 import React from 'react';
 import type {IconData} from '../types.js';
-import {loadSvg, simpleIconsVersion} from '../utils.js';
+import {loadSvg} from '../utils.js';
 
-const Icon = ({icon, luminance}: {icon: IconData; luminance: number}) => {
+const Icon = ({
+	icon,
+	luminance,
+	version,
+}: {
+	icon: IconData;
+	luminance: number;
+	version: string;
+}) => {
 	const isWhite = icon.hex === 'FFFFFF';
 
 	return (
@@ -12,7 +20,7 @@ const Icon = ({icon, luminance}: {icon: IconData; luminance: number}) => {
 			onDragEnd={async (event) => {
 				// @ts-expect-error: Expect `length`
 				if (event.view.length === 0) return;
-				const svg = await loadSvg(icon.slug);
+				const svg = await loadSvg(version, icon.slug);
 				const coloredSvg = svg.replace('<path ', `<path fill="#${icon.hex}" `);
 				const file = new File([coloredSvg], 'content.svg', {
 					type: 'image/svg+xml',
@@ -37,7 +45,7 @@ const Icon = ({icon, luminance}: {icon: IconData; luminance: number}) => {
 				borderBottomWidth: isWhite ? 1 : 0,
 			}}
 			onClick={async () => {
-				const svg = await loadSvg(icon.slug);
+				const svg = await loadSvg(version, icon.slug);
 				parent.postMessage(
 					{
 						pluginMessage: {
@@ -53,7 +61,7 @@ const Icon = ({icon, luminance}: {icon: IconData; luminance: number}) => {
 				className="icon-image"
 				style={{
 					backgroundColor: isWhite ? 'currentColor' : `#${icon.hex}`,
-					WebkitMask: `url(https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/icons/${icon.slug}.svg)`,
+					WebkitMask: `url(https://cdn.jsdelivr.net/npm/simple-icons@${version}/icons/${icon.slug}.svg)`,
 					WebkitMaskSize: 'contain',
 					WebkitMaskRepeat: 'no-repeat',
 					WebkitMaskPosition: 'center',

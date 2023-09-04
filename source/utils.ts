@@ -1,6 +1,4 @@
-import type {IconJson} from './types';
-
-export const simpleIconsVersion = '9.13.0';
+import type {IconJson, JsDelivrNpmResponse} from './types';
 
 const titleToSlugReplacements: Record<string, string> = {
 	/* eslint-disable @typescript-eslint/naming-convention */
@@ -32,7 +30,15 @@ export const titleToSlug = (title: string) =>
 		.normalize('NFD')
 		.replace(titleToSlugRangeRegex, '');
 
-export const loadJson = async () => {
+export const loadLatestVersion = async () => {
+	const response = await fetch(
+		'https://data.jsdelivr.com/v1/packages/npm/simple-icons',
+	);
+	const json = (await response.json()) as JsDelivrNpmResponse;
+	return json.tags.latest;
+};
+
+export const loadJson = async (simpleIconsVersion: string) => {
 	const response = await fetch(
 		`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/_data/simple-icons.json`,
 	);
@@ -40,7 +46,7 @@ export const loadJson = async () => {
 	return json;
 };
 
-export const loadSvg = async (slug: string) => {
+export const loadSvg = async (simpleIconsVersion: string, slug: string) => {
 	const iconUrl = `https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/icons/${slug}.svg`;
 	const response = await fetch(iconUrl);
 	const svg = await response.text();

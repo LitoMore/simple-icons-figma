@@ -17,9 +17,11 @@ const ListContainer = styled.div`
 const Icons = ({
 	searchString = '',
 	icons,
+	version,
 }: {
 	searchString?: string;
 	icons: IconData[];
+	version: string;
 }) => {
 	const searcher = new Searcher(icons, {
 		keySelector: (icon) => [icon.title, icon.slug],
@@ -53,6 +55,7 @@ const Icons = ({
 						key={icon.slug}
 						icon={icon}
 						luminance={Number(luminanceMap.get(icon.hex))}
+						version={version}
 					/>
 				);
 			}}
