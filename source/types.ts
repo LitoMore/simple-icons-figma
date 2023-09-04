@@ -2,6 +2,11 @@ export type IconData = {
 	title: string;
 	slug: string;
 	hex: string;
+	aliases?: {
+		aka?: string[];
+		dup?: Array<{title: string; hex?: string; guidelines?: string}>;
+		loc?: Record<string, string>;
+	};
 };
 
 export type IconJson = {

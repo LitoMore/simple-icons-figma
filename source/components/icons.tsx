@@ -24,7 +24,17 @@ const Icons = ({
 	version: string;
 }) => {
 	const searcher = new Searcher(icons, {
-		keySelector: (icon) => [icon.title, icon.slug],
+		keySelector(icon) {
+			return [
+				icon.title,
+				icon.slug,
+				icon.aliases?.aka,
+				icon.aliases?.dup?.map((dup) => dup.title),
+				Object.values(icon.aliases?.loc ?? {}),
+			]
+				.flat()
+				.filter(Boolean) as string[];
+		},
 	});
 	const searchResult = searchString ? searcher.search(searchString) : icons;
 	const luminanceMap = useMemo(
