@@ -5,6 +5,15 @@
     padding: 0;
   }
 
+  div[data-test-id='virtuoso-scroller']: {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  div[data-test-id='virtuoso-scroller']::-webkit-scrollbar {
+    display: none;
+  }
+
   .virtuoso-grid-item:last-child {
     margin-bottom: 8px;
   }
