@@ -22,7 +22,7 @@ const App = () => {
 			setIcons(icons);
 			setVersion(version);
 		})();
-	});
+	}, []);
 
 	return (
 		<div className="container">

@@ -32,7 +32,9 @@ export const titleToSlug = (title: string) =>
 
 export const loadLatestVersion = async () => {
 	const response = await fetch(
-		'https://data.jsdelivr.com/v1/packages/npm/simple-icons',
+		new Request('https://data.jsdelivr.com/v1/packages/npm/simple-icons', {
+			cache: 'no-cache',
+		}),
 	);
 	const json = (await response.json()) as JsDelivrNpmResponse;
 	return json.tags.latest;
