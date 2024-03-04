@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es6",
     "jsx": "react",
-    "lib": ["es6", "dom"],
+    "lib": ["es2021", "dom"],
     "outDir": "distribution",
     "strict": true,
     "skipLibCheck": true,

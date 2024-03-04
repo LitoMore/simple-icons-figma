@@ -5,6 +5,7 @@
   "main": "distribution/code.js",
   "editorType": ["figma", "figjam"],
   "ui": "distribution/index.html",
+  "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": ["https://cdn.jsdelivr.net", "https://data.jsdelivr.com"],
     "reasoning": "We use jsDelivr to host our icons."

@@ -26,9 +26,9 @@ const titleToSlugRangeRegex = /[^a-z\d]/g;
 export const titleToSlug = (title: string) =>
 	title
 		.toLowerCase()
-		.replace(titleToSlugCharsRegex, (char) => titleToSlugReplacements[char])
+		.replaceAll(titleToSlugCharsRegex, (char) => titleToSlugReplacements[char])
 		.normalize('NFD')
-		.replace(titleToSlugRangeRegex, '');
+		.replaceAll(titleToSlugRangeRegex, '');
 
 export const loadLatestVersion = async () => {
 	const response = await fetch(

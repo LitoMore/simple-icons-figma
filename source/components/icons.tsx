@@ -29,7 +29,7 @@ const Icons = ({
 				icon.title,
 				icon.slug,
 				icon.aliases?.aka,
-				icon.aliases?.dup?.map((dup) => dup.title),
+				icon.aliases?.dup?.map((duplicate) => duplicate.title),
 				Object.values(icon.aliases?.loc ?? {}),
 			]
 				.flat()
