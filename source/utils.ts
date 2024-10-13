@@ -1,4 +1,4 @@
-import type {IconJson, JsDelivrNpmResponse} from './types';
+import type {IconJson, JsDelivrNpmResponse} from './types.js';
 
 const titleToSlugReplacements: Record<string, string> = {
 	/* eslint-disable @typescript-eslint/naming-convention */

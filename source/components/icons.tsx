@@ -55,7 +55,6 @@ const Icons = ({
 			totalCount={searchResult.length}
 			overscan={100}
 			components={{
-				// @ts-expect-error: Expected
 				List: ListContainer,
 			}}
 			itemContent={(index) => {
