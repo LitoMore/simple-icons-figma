@@ -1,4 +1,4 @@
-import type {IconJson, JsDelivrNpmResponse} from './types.js';
+import type {IconData, JsDelivrNpmResponse} from './types.js';
 
 const titleToSlugReplacements: Record<string, string> = {
 	/* eslint-disable @typescript-eslint/naming-convention */
@@ -41,11 +41,15 @@ export const loadLatestVersion = async () => {
 };
 
 export const loadJson = async (simpleIconsVersion: string) => {
+	const [major] = simpleIconsVersion.split('.');
+	const isNewFormat = Number(major) >= 14;
+	const dataJsonUri = isNewFormat ? 'data.json' : '_data/simple-icons.json';
 	const response = await fetch(
-		`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/_data/simple-icons.json`,
+		`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/${dataJsonUri}`,
 	);
-	const json = (await response.json()) as IconJson;
-	return json;
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	const json = await response.json();
+	return (isNewFormat ? json : json.icons) as IconData[];
 };
 
 export const loadSvg = async (simpleIconsVersion: string, slug: string) => {

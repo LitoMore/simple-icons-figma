@@ -15,7 +15,7 @@ const App = () => {
 		(async () => {
 			const version = await loadLatestVersion();
 			const json = await loadJson(version);
-			const icons = json.icons.map((icon) => ({
+			const icons = json.map((icon) => ({
 				...icon,
 				slug: icon.slug || titleToSlug(icon.title),
 			}));
