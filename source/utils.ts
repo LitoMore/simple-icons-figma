@@ -43,9 +43,8 @@ export const loadLatestVersion = async () => {
 export const loadJson = async (simpleIconsVersion: string) => {
 	const [major] = simpleIconsVersion.split('.');
 	const isNewFormat = Number(major) >= 14;
-	const dataJsonUri = isNewFormat ? 'data.json' : '_data/simple-icons.json';
 	const response = await fetch(
-		`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/${dataJsonUri}`,
+		`https://cdn.jsdelivr.net/npm/simple-icons@${simpleIconsVersion}/_data/simple-icons.json`,
 	);
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const json = await response.json();
