@@ -12,11 +12,13 @@ const Icon = ({
 	version: string;
 }) => {
 	const isWhite = icon.hex === 'FFFFFF';
+	const isBright = luminance >= 0.4;
+	const isDark = luminance <= 0.05;
 
 	return (
 		<div
 			draggable
-			className="icon"
+			className={`icon  ${isBright ? 'bright' : isDark ? 'dark' : ''}`}
 			onDragEnd={async (event) => {
 				// @ts-expect-error: Expect `length`
 				if (event.view.length === 0) return;
@@ -69,7 +71,7 @@ const Icon = ({
 			/>
 			<div className="icon-title">{icon.title}</div>
 			<div
-				className={`icon-color ${luminance < 0.4 ? 'light' : ''}`}
+				className={`icon-color ${isBright ? '' : 'light'}`}
 				style={{
 					backgroundColor: `#${icon.hex}`,
 				}}

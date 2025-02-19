@@ -1,6 +1,7 @@
 <title>The Figma plugin for Simple Icons</title>
 <style>
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
   }
@@ -10,7 +11,7 @@
     scrollbar-width: none;
   }
 
-  div[data-test-id='virtuoso-scroller']::-webkit-scrollbar {
+  div[data-test-id="virtuoso-scroller"]::-webkit-scrollbar {
     display: none;
   }
 
@@ -27,6 +28,7 @@
     height: 30px;
     padding: 2px;
     border: 2px solid black;
+    border-radius: 5px;
     outline: none;
     background-color: #ffffffee;
     --webkit-apperance: none;
@@ -63,6 +65,10 @@
     user-select: none;
   }
 
+  .icon.bright {
+    filter: contrast(0.65);
+  }
+
   .icon-title {
     padding: 0 2px;
     font-size: 12px;
@@ -92,6 +98,23 @@
     :root {
       --fallback-color-bg: #2c2c2c;
       --fallback-color-text: #fff;
+    }
+
+    .icon {
+      border-color: var(--figma-color-text) !important;
+      border-width: 1px !important;
+    }
+
+    .icon.bright {
+      filter: unset;
+    }
+
+    .icon.dark {
+      filter: contrast(0.65) brightness(1.5);
+    }
+
+    .icon-color {
+      border-top: 1px dashed var(--figma-color-text) !important;
     }
   }
 

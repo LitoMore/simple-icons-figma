@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import Search from './components/search.js';
 import Icons from './components/icons.js';
 import Loading from './components/loading.js';
@@ -40,4 +40,4 @@ const App = () => {
 	);
 };
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+createRoot(document.querySelector('#app')!).render(<App />);

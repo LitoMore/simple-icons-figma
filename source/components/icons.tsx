@@ -1,4 +1,4 @@
-import React, {useMemo, memo} from 'react';
+import React, {useMemo} from 'react';
 import styled from 'styled-components'; // eslint-disable-line import/no-named-as-default
 import getRelativeLuminance from 'get-relative-luminance';
 import {Searcher} from 'fast-fuzzy';
