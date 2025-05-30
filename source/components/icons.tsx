@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import styled from 'styled-components'; // eslint-disable-line import/no-named-as-default
+import styled from 'styled-components';
 import getRelativeLuminance from 'get-relative-luminance';
 import {Searcher} from 'fast-fuzzy';
 import {VirtuosoGrid} from 'react-virtuoso';
@@ -43,7 +43,7 @@ const Icons = ({
 				[...new Set(icons.map((icon) => icon.hex))].map((hex) => [
 					hex,
 					// @ts-expect-error: Expected
-					getRelativeLuminance.default(`#${hex}`), // eslint-disable-line @typescript-eslint/no-unsafe-call
+					getRelativeLuminance.default(`#${hex}`),
 				]),
 			),
 		[icons],

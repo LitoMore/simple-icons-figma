@@ -17,13 +17,15 @@ figma.ui.onmessage = (message) => {
 figma.on('drop', (event) => {
 	const {files} = event;
 	if (files.length > 0 && files[0].type === 'image/svg+xml') {
-		// eslint-disable-next-line @typescript-eslint/no-floating-promises
-		files[0].getTextAsync().then((text) => {
-			const newNode = figma.createNodeFromSvg(text);
-			newNode.x = event.absoluteX;
-			newNode.y = event.absoluteY;
-			figma.currentPage.selection = [newNode];
-		});
+		files[0]
+			.getTextAsync()
+			// eslint-disable-next-line promise/prefer-await-to-then
+			.then((text) => {
+				const newNode = figma.createNodeFromSvg(text);
+				newNode.x = event.absoluteX;
+				newNode.y = event.absoluteY;
+				figma.currentPage.selection = [newNode];
+			});
 		return false;
 	}
 });
