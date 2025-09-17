@@ -17,7 +17,7 @@ figma.ui.onmessage = (message) => {
 figma.on('drop', (event) => {
 	const {files} = event;
 	if (files.length > 0 && files[0].type === 'image/svg+xml') {
-		files[0]
+		void files[0]
 			.getTextAsync()
 			// eslint-disable-next-line promise/prefer-await-to-then
 			.then((text) => {
